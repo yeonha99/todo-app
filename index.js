@@ -4,13 +4,13 @@ const app = express()
 const port = 3000
 const {User}=require("./models/User")
 const bodyParser=require('body-parser')
-
+const config=require('./config/key')
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(bodyParser.json());
 
 const mongoose=require('mongoose')
-mongoose.connect('mongodb+srv://yeoni2a:yh1207@todo-app.0e0r5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect(config.mongoURI)
     .then(()=>console.log('MongoDB Connected...'))
     .catch(err => console.log(err))
 
